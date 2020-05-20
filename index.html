@@ -52,21 +52,23 @@
     </div>`,
     data(){
         return {
-            comments:[{
+            comments:[
+                {
                 
                     name: 'Ayrton Senna',
                     message:'Lorem Ipsum'
                 
-                     }],
-                     name: '',
-                     message: ''
+                 }
+            ],
+                name: '',
+                message: ''
                 }
             },
             methods:{
                 addComment(){
                     console.log("chamado!");
                     console.log(this.name);
-                    console.log("chamado!"this.message);
+                    console.log(this.message);
                 }
             }
         })
