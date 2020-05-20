@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -41,37 +41,58 @@
             <hr/>
         </div>
         <div class="list-group">
-            <div class="list-group-item" v-for="comment in comments">
+            <div class="list-group-item" v-for="(comment, index) in allComments">
                 <span class="comment__author">Autor:<strong>{{comment.name}}</strong></span>
                 <p>{{comment.message}}</p>
                 <div>
-                    <a href="#"title="Excluir">Excluir</a>
+                    <a href="#"title="Excluir" v-on:click.prevent="removeComment(index)">Excluir</a>
                 </div>
             </div>
         </div>
     </div>`,
     data(){
         return {
-            comments:[
-                {
-                
-                    name: 'Ayrton Senna',
-                    message:'Lorem Ipsum'
-                
-                 }
-            ],
-                name: '',
-                message: ''
+            comments:[],
+            name: '',
+            message: ''
                 }
             },
             methods:{
                 addComment(){
-                    console.log("chamado!");
+                    if(this.message.trim() ===''){
+                        this.name = '';
+                        this.message = '';
+                        return
+                    }
                     console.log(this.name);
                     console.log(this.message);
+                    this.comments.push({
+                        name:this.name,
+                        message:this.message
+                    })
+                    this.name = '';
+                    this.message = '';
+
+                    },
+                    removeComment(index){
+                        this.comments.splice(index, 1);
+
+                    }
+                },
+                computed:{
+                    allComments(){
+                        return this.comments.map(comment =>({
+                            ...comment,
+                            name: comment.name.trim() === '' ? 'Anônimo': comment.name
+                        }))
+                    }
+                },
+                watch:{
+                    comments(val){
+                        console.log('val',val)
+                    }
                 }
-            }
-        })
+            })
     </script>
 </body>
 </html>
