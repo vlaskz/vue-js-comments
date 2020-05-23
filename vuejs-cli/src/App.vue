@@ -1,14 +1,14 @@
 <template>
- 
+  <Comments />
 </template>
 
 <script>
-import Comments from './components/Comments.vue'
+import Comments from './components/Comments'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Comments
   }
 }
 </script>
