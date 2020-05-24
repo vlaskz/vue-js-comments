@@ -4,3 +4,5 @@ Página simples utilizando Vue.js para comentários. No momento, Sem armazenamen
 É possivel adicionar, remover e postar comentários anônimos.
 
 Para criar este projeto basta clonar o repositório, e na pasta `vuejs-cli` entrar com `npm run serve`
+
+![Interface](vuejs-cli/src/assets/img/comments.png)
